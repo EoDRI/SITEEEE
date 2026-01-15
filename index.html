@@ -1,387 +1,157 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Dri Studio Web - | Sites Profissionais e Modernos</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Dri Studio Web | Sites Profissionais e Modernos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Dri Studio Web - Criação de sites modernos, responsivos e de alta performance para negócios locais.">
-<meta name="keywords" content="web design, criar site, landing page, site para empresas, dri studio">
-<meta property="og:title" content="Dri Studio Web - Transforme sua presença digital">
-<meta property="og:description" content="Sites profissionais que vendem. Entre em contato e peça seu orçamento.">
-<meta property="og:type" content="website">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-:root{
-  --red:#e63946;
-  --bg:#0b0b0f;
-  --bg2:#141418;
-  --card:#1a1a20;
-  --text:#ffffff;
-  --gray:#b5b5b5;
-  --shadow:rgba(0,0,0,.5);
-}
-
-.light{
-  --bg:#f2f2f2;
-  --bg2:#ffffff;
-  --card:#e8e8e8;
-  --text:#111;
-  --gray:#444;
-  --shadow:rgba(0,0,0,.15);
-}
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Inter,Arial,sans-serif;
-  transition: background .35s ease, color .35s ease, box-shadow .35s ease;
-}
-
-body{
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-}
-
-/* FUNDO </> */
-.code-bg{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-}
-.code-bg span{
-  position:absolute;
-  top:-50px;
-  animation:fall linear infinite;
-  color:rgba(230,57,70,.15);
-}
-@keyframes fall{ to{transform:translateY(120vh)} }
-
-/* TOGGLE TEMA */
-.theme-switch{
-  position:fixed;
-  top:20px;
-  right:20px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  background:var(--card);
-  padding:10px 14px;
-  border-radius:30px;
-  box-shadow:0 10px 30px var(--shadow);
-  z-index:100;
-}
-.theme-switch i{ color:var(--red); font-size:14px; }
-.switch{
-  width:46px; height:24px;
-  background:#333; border-radius:20px;
-  position:relative; cursor:pointer;
-}
-.switch::after{
-  content:""; position:absolute; top:3px; left:3px;
-  width:18px; height:18px; background:#fff; border-radius:50%; transition:.35s;
-}
-.light .switch::after{ transform:translateX(22px); }
-
-/* HEADER */
-header{ text-align:center; padding:120px 20px 60px; }
-header h1{ color:var(--red); font-size:3rem; margin-bottom:15px; }
-header p.tags{
-  color:var(--gray);
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  flex-wrap:wrap;
-  margin-top:15px;
-}
-header p span{ display:flex; align-items:center; gap:6px; }
-
-/* SEÇÕES */
-section{ padding:60px 20px; max-width:1200px; margin:auto; }
-.section-title{ text-align:center; margin-bottom:40px; font-size:2.2rem; color:var(--red); }
-
-/* PROCESSO */
-.process-steps{
-  display:flex; justify-content:space-around; flex-wrap:wrap; gap:30px;
-  text-align:center;
-}
-.step{ flex:1; min-width:250px; padding:20px; }
-.step i{ font-size:3rem; color:var(--red); margin-bottom:15px; }
-.step h4{ margin-bottom:10px; font-size:1.2rem; }
-
-/* PORTFÓLIO */
-.portfolio-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap:25px;
-}
-.project-card{
-  background:var(--card);
-  border-radius:20px;
-  overflow:hidden;
-  border:1px solid rgba(230,57,70,0.1);
-  box-shadow: 0 10px 30px var(--shadow);
-}
-.project-img{
-  width:100%; height:220px;
-  background:linear-gradient(45deg, #1a1a20, #25252e);
-  display:flex; align-items:center; justify-content:center;
-  color:var(--gray); border-bottom: 2px solid var(--red);
-}
-
-/* CARDS DE PREÇO */
-.cards{ display:flex; gap:30px; justify-content:center; flex-wrap:wrap; }
-.card{
-  background:var(--card); padding:35px; width:320px;
-  border-radius:22px; box-shadow:0 20px 50px var(--shadow);
-  position:relative;
-}
-.card:hover{ transform:translateY(-10px); }
-.card.destaque{ border:2px solid var(--red); }
-.card h3{ color:var(--red); margin-bottom:15px; }
-.price{ font-size:2.5rem; font-weight:700; margin-bottom:20px; }
-.price span{ font-size:1rem; color:var(--gray); }
-.card ul{ list-style:none; margin-bottom:25px; }
-.card li{ margin-bottom:12px; color:var(--gray); display:flex; align-items:center; gap:10px; }
-.card li i{ color:var(--red); }
-
-/* FAQ */
-.faq-container{ max-width:800px; margin:auto; }
-details{ background:var(--card); padding:18px; border-radius:12px; margin-bottom:12px; cursor:pointer; }
-summary{ font-weight:bold; color:var(--red); list-style:none; display:flex; justify-content:space-between; align-items:center; }
-summary::after{ content: '+'; font-size: 1.5rem; }
-details[open] summary::after{ content: '-'; }
-details p { margin-top:12px; color:var(--gray); line-height:1.6; }
-
-/* BOTÕES & MODAL */
-.buy{
-  width:100%; padding:16px; border:none; border-radius:16px;
-  background:linear-gradient(135deg,#e63946,#b11226);
-  color:#fff; cursor:pointer; font-weight:600; font-size:1rem;
-}
-.buy:hover{ transform:scale(1.03); box-shadow:0 10px 25px rgba(230,57,70,0.4); }
-
-.modal{
-  position:fixed; inset:0; background:rgba(0,0,0,0.85);
-  display:none; align-items:center; justify-content:center; z-index:999;
-}
-.modal-box{ background:var(--bg2); padding:35px; border-radius:25px; width:90%; max-width:450px; }
-.modal-box input, .modal-box select, .modal-box textarea{
-  width:100%; margin-bottom:15px; padding:14px; border:none; border-radius:12px; background:#0f0f13; color:#fff;
-}
-
-.floating-btn{
-  position:fixed; bottom:25px; right:25px;
-  background:#25d366; color:#fff; padding:16px 28px;
-  border-radius:50px; text-decoration:none; font-weight:bold;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3); z-index:100; display:flex; align-items:center; gap:10px;
-}
-
-footer{ text-align:center; padding:60px 20px; color:var(--gray); border-top:1px solid rgba(230,57,70,0.1); margin-top:50px; }
-</style>
+    <meta name="description" content="Criação de sites modernos e de alta performance para negócios locais.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="code-bg"></div>
 
-<div class="code-bg"></div>
+    <div class="theme-switch">
+        <i class="fa-solid fa-moon"></i>
+        <div class="switch" onclick="toggleTheme()"></div>
+        <i class="fa-solid fa-sun"></i>
+    </div>
 
-<div class="theme-switch">
-  <i class="fa-solid fa-moon"></i>
-  <div class="switch" onclick="toggleTheme()"></div>
-  <i class="fa-solid fa-sun"></i>
-</div>
-
-<header>
-  <h1>&lt;/&gt; Dri Studio Web</h1>
-  <p style="font-size:1.2rem; color:var(--gray)">Wweb Design de alto impacto para quem busca resultados.</p>
-  <p class="tags">
-    <span><i class="fa-solid fa-bolt"></i> Rápido</span>
-    <span><i class="fa-solid fa-mobile-screen"></i> Responsivo</span>
-    <span><i class="fa-solid fa-magnifying-glass"></i> Otimizado SEO</span>
-  </p>
-</header>
-
-<section>
-  <h2 class="section-title">Como criamos seu site</h2>
-  <div class="process-steps">
-    <div class="step">
-      <i class="fa-solid fa-comments-dollar"></i>
-      <h4>1. Estratégia</h4>
-      <p style="color:var(--gray)">Definimos o objetivo do site: vender, informar ou captar leads.</p>
-    </div>
-    <div class="step">
-      <i class="fa-solid fa-wand-magic-sparkles"></i>
-      <h4>2. Criação</h4>
-      <p style="color:var(--gray)">Desenvolvemos um layout moderno seguindo a identidade da sua marca.</p>
-    </div>
-    <div class="step">
-      <i class="fa-solid fa-circle-check"></i>
-      <h4>3. Entrega</h4>
-      <p style="color:var(--gray)">Testes finais e publicação do seu site em tempo recorde.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2 class="section-title">Nossos Projetos</h2>
-  <div class="portfolio-grid">
-    <div class="project-card">
-      <div class="project-img"><i class="fa-solid fa-image fa-2x"></i></div>
-      <div style="padding:20px">
-        <h4>Landing Page Express</h4>
-        <p style="color:var(--gray); font-size:0.9rem; margin-top:5px">Ideal para campanhas de anúncios rápidos.</p>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="project-img"><i class="fa-solid fa-store fa-2x"></i></div>
-      <div style="padding:20px">
-        <h4>Site para Negócios Locais</h4>
-        <p style="color:var(--gray); font-size:0.9rem; margin-top:5px">Focado em converter visitantes em clientes reais.</p>
-      </div>
-    </div>
-    <div class="project-card">
-        <div class="project-img"><i class="fa-solid fa-code fa-2x"></i></div>
-        <div style="padding:20px">
-          <h4>Sistemas Customizados</h4>
-          <p style="color:var(--gray); font-size:0.9rem; margin-top:5px">Desenvolvimento sob medida para necessidades específicas.</p>
+    <header>
+        <h1>&lt;/&gt; Dri Studio Web</h1>
+        <p class="subtitle">Web Design de alto impacto para quem busca resultados.</p>
+        <div class="tags">
+            <span><i class="fa-solid fa-bolt"></i> Rápido</span>
+            <span><i class="fa-solid fa-mobile-screen"></i> Responsivo</span>
+            <span><i class="fa-solid fa-magnifying-glass"></i> Otimizado SEO</span>
         </div>
-      </div>
-  </div>
-</section>
+    </header>
 
-<section id="planos">
-  <h2 class="section-title">Investimento</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Básico</h3>
-      <div class="price">R$250 <span>único</span></div>
-      <ul>
-        <li><i class="fa-solid fa-check"></i> 1 Página (Landing Page)</li>
-        <li><i class="fa-solid fa-check"></i> Integração WhatsApp</li>
-        <li><i class="fa-solid fa-check"></i> 3 Dias de entrega</li>
-      </ul>
-      <button class="buy" onclick="openForm('Básico')">Quero este</button>
+    <section id="processo">
+        <h2 class="section-title">Como criamos seu site</h2>
+        <div class="process-steps">
+            <div class="step">
+                <i class="fa-solid fa-comments-dollar"></i>
+                <h4>1. Estratégia</h4>
+                <p>Definimos o objetivo do site: vender, informar ou captar leads.</p>
+            </div>
+            <div class="step">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h4>2. Criação</h4>
+                <p>Desenvolvemos um layout moderno seguindo a identidade da sua marca.</p>
+            </div>
+            <div class="step">
+                <i class="fa-solid fa-circle-check"></i>
+                <h4>3. Entrega</h4>
+                <p>Testes finais e publicação do seu site em tempo recorde.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2 class="section-title">Nossos Projetos</h2>
+        <div class="portfolio-grid">
+            <article class="project-card">
+                <div class="project-img"><i class="fa-solid fa-image fa-2x"></i></div>
+                <div class="project-info">
+                    <h4>Landing Page Express</h4>
+                    <p>Ideal para campanhas de anúncios rápidos.</p>
+                </div>
+            </article>
+            <article class="project-card">
+                <div class="project-img"><i class="fa-solid fa-store fa-2x"></i></div>
+                <div class="project-info">
+                    <h4>Site para Negócios Locais</h4>
+                    <p>Focado em converter visitantes em clientes reais.</p>
+                </div>
+            </article>
+            <article class="project-card">
+                <div class="project-img"><i class="fa-solid fa-code fa-2x"></i></div>
+                <div class="project-info">
+                    <h4>Sistemas Customizados</h4>
+                    <p>Desenvolvimento sob medida para necessidades específicas.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="planos">
+        <h2 class="section-title">Investimento</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Básico</h3>
+                <div class="price">R$250 <span>único</span></div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> 1 Página (Landing Page)</li>
+                    <li><i class="fa-solid fa-check"></i> Integração WhatsApp</li>
+                    <li><i class="fa-solid fa-check"></i> 3 Dias de entrega</li>
+                </ul>
+                <button class="buy" onclick="openForm('Básico')">Quero este</button>
+            </div>
+
+            <div class="card destaque">
+                <div class="badge">RECOMENDADO</div>
+                <h3>Padrão</h3>
+                <div class="price">R$450 <span>único</span></div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Até 4 Páginas</li>
+                    <li><i class="fa-solid fa-check"></i> Otimização Google (SEO)</li>
+                    <li><i class="fa-solid fa-check"></i> Suporte de 30 dias</li>
+                </ul>
+                <button class="buy" onclick="openForm('Padrão')">Quero este</button>
+            </div>
+
+            <div class="card">
+                <h3>Premium</h3>
+                <div class="price">R$700 <span>único</span></div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Site Multi-páginas</li>
+                    <li><i class="fa-solid fa-check"></i> Animações Avançadas</li>
+                    <li><i class="fa-solid fa-check"></i> Blog ou Galeria de Fotos</li>
+                </ul>
+                <button class="buy" onclick="openForm('Premium')">Quero este</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Dri Studio Web</p>
+        <div class="social-links">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/qr/LHIYUSYXGMPWI1" class="floating-btn">
+        <i class="fa-brands fa-whatsapp"></i> Conversar agora
+    </a>
+
+    <div class="modal" id="modal">
+        <div class="modal-box">
+            <h3>Solicitar Orçamento</h3>
+            <form action="https://formsubmit.co/uunonmes@gmail.com" method="POST">
+                <input type="hidden" name="_next" value="https://dri-ten.vercel.app/">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" id="plano_escolhido" name="Plano Selecionado">
+                
+                <input type="text" name="Nome" placeholder="Seu nome" required>
+                <input type="email" name="Email" placeholder="Seu e-mail" required>
+                <select name="Hospedagem" required>
+                    <option value="" disabled selected>Deseja Hospedagem? (R$36,99/mês)</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+                <textarea name="Mensagem" placeholder="Seu projeto..." rows="4" required></textarea>
+                <button class="buy" type="submit">Enviar</button>
+                <button type="button" onclick="closeModal()" class="btn-close">Voltar</button>
+            </form>
+        </div>
     </div>
 
-    <div class="card destaque">
-      <div style="position:absolute; top:-15px; left:50%; transform:translateX(-50%); background:var(--red); padding:5px 15px; border-radius:20px; font-size:0.8rem; font-weight:bold">RECOMENDADO</div>
-      <h3>Padrão</h3>
-      <div class="price">R$450 <span>único</span></div>
-      <ul>
-        <li><i class="fa-solid fa-check"></i> Até 4 Páginas</li>
-        <li><i class="fa-solid fa-check"></i> Otimização Google (SEO)</li>
-        <li><i class="fa-solid fa-check"></i> Suporte de 30 dias</li>
-      </ul>
-      <button class="buy" onclick="openForm('Padrão')">Quero este</button>
-    </div>
-
-    <div class="card">
-      <h3>Premium</h3>
-      <div class="price">R$700 <span>único</span></div>
-      <ul>
-        <li><i class="fa-solid fa-check"></i> Site Multi-páginas</li>
-        <li><i class="fa-solid fa-check"></i> Animações Avançadas</li>
-        <li><i class="fa-solid fa-check"></i> Blog ou Galeria de Fotos</li>
-      </ul>
-      <button class="buy" onclick="openForm('Premium')">Quero este</button>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2 class="section-title">Dúvidas Frequente</h2>
-  <div class="faq-container">
-    <details>
-      <summary>Quanto tempo demora para meu site ficar pronto?</summary>
-      <p>O prazo varia conforme o plano: 3 dias para o plano Básico e até 7 dias para o Premium após o envio de todas as informações.</p>
-    </details>
-    <details>
-      <summary>Eu mesmo posso alterar os textos depois?</summary>
-      <p>Sim! Entregamos o site pronto, mas se você optar pelo nosso plano de suporte, nós cuidamos de todas as alterações para você.</p>
-    </details>
-    <details>
-        <summary>O site funciona no celular?</summary>
-        <p>Com certeza. Todos os nossos projetos são "Mobile First", ou seja, criados especificamente para carregar rápido e ficar lindos em smartphones.</p>
-      </details>
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 Dri Studio Web</p>
-  <p style="margin-top:10px; font-size:0.9rem">Siga-nos: @dri_studioweb</p>
-  <div style="margin-top:20px; font-size:1.8rem">
-    <a href="#" style="color:var(--gray); margin:0 15px"><i class="fa-brands fa-instagram"></i></a>
-    <a href="#" style="color:var(--gray); margin:0 15px"><i class="fa-brands fa-linkedin"></i></a>
-  </div>
-</footer>
-
-<a href="https://wa.me/qr/LHIYUSYXGMPWI1" class="floating-btn">
-    <i class="fa-brands fa-whatsapp fa-xl"></i> Conversar agora
-</a>
-
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <h3 style="margin-bottom:20px; text-align:center">Solicitar Orçamento</h3>
-    <form action="https://formsubmit.co/uunonmes@gmail.com" method="POST">
-      <input type="hidden" name="_next" value="https://siteeee-gilt.vercel.app/">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_subject" value="📩 NOVO PEDIDO - Dri Studio Web">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" id="plano_escolhido" name="Plano Selecionado">
-      <input type="text" name="_honey" style="display:none">
-
-      <input type="text" name="Nome" placeholder="Seu nome" required>
-      <input type="email" name="Email" placeholder="Seu melhor e-mail" required>
-      
-      <select name="Hospedagem" required>
-        <option value="" disabled selected>Deseja Hospedagem? (R$36,99/mês)</option>
-        <option value="Sim">Sim, quero o bônus de hospedagem</option>
-        <option value="Não">Não, já possuo servidor próprio</option>
-      </select>
-
-      <textarea name="Mensagem" placeholder="Fale brevemente sobre o seu projeto..." rows="4" required></textarea>
-
-      <button class="buy" type="submit">Enviar meu pedido</button>
-      <button type="button" onclick="closeModal()" style="background:none; border:none; color:var(--gray); cursor:pointer; width:100%; margin-top:15px; font-size:0.9rem">Voltar para o site</button>
-    </form>
-  </div>
-</div>
-
-<script>
-// FUNDO DE CÓDIGO CAINDO
-const bg=document.querySelector('.code-bg');
-for(let i=0;i<40;i++){
-  const s=document.createElement('span');
-  s.innerText='</>';
-  s.style.left=Math.random()*100+'vw';
-  s.style.fontSize=12+Math.random()*18+'px';
-  s.style.animationDuration=10+Math.random()*15+'s';
-  s.style.animationDelay=Math.random()*5+'s';
-  bg.appendChild(s);
-}
-
-// LÓGICA DO MODAL
-const modal=document.getElementById('modal');
-function openForm(plano){
-  document.getElementById('plano_escolhido').value = plano;
-  modal.style.display='flex';
-}
-function closeModal(){ modal.style.display='none'; }
-
-// FECHAR MODAL CLICANDO FORA
-window.onclick = function(event) {
-  if (event.target == modal) { closeModal(); }
-}
-
-// TEMA DARK/LIGHT
-function toggleTheme(){
-  document.body.classList.toggle('light');
-}
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
