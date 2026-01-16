@@ -10,8 +10,14 @@
 }
 
 .light {
-  --bg: #f5f5f7; --bg2: #ffffff; --card: #ffffff;
-  --text: #1d1d1f; --gray: #6e6e73; --border: rgba(0, 0, 0, 0.1);
+  --bg: #f5f5f7; 
+  --bg2: #ffffff; 
+  --card: rgba(255, 255, 255, 0.9);
+  --text: #1d1d1f; 
+  --gray: #6e6e73; 
+  --border: rgba(0, 0, 0, 0.1);
+  --red: #d33f49; /* vermelho para destaque no claro */
+  --red-glow: rgba(211, 63, 73, 0.3);
 }
 
 * {
@@ -28,7 +34,6 @@ body {
     position: relative;
 }
 
-/* Blobs de luz para preencher o vazio */
 body::before, body::after {
     content: "";
     position: fixed;
@@ -44,7 +49,6 @@ body::before, body::after {
 body::before { top: -10%; left: -10%; }
 body::after { bottom: -10%; right: -10%; }
 
-/* Grid Vector-style no fundo */
 .code-bg { 
     position: fixed; 
     inset: 0; 
@@ -55,7 +59,6 @@ body::after { bottom: -10%; right: -10%; }
         linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
     background-size: 60px 60px;
 }
-
 .code-bg span { position: absolute; top: -50px; animation: fall linear infinite; color: var(--red); opacity: 0.2; }
 @keyframes fall { to { transform: translateY(120vh); } }
 
@@ -73,7 +76,7 @@ header h1 {
 .step, .card, .project-card {
     background: var(--card);
     border: 1px solid var(--border);
-    backdrop-filter: blur(12px); /* Efeito de vidro */
+    backdrop-filter: blur(12px); 
     cursor: pointer;
     position: relative;
     box-shadow: inset 0 0 20px rgba(255,255,255,0.02);
@@ -105,17 +108,48 @@ section { padding: 80px 20px; max-width: 1200px; margin: auto; }
 .project-info { padding: 25px; }
 
 /* CARDS DE PREÇO */
-.cards { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
-.card { padding: 50px 35px; width: 340px; border-radius: 28px; }
+.cards { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; align-items: stretch; }
+.card { 
+    padding: 60px 30px 40px; 
+    width: 340px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    text-align: left;
+    border-radius: 28px;
+}
 .card.destaque { 
     border: 2px solid var(--red); 
     background: linear-gradient(180deg, rgba(22,22,26,0.8), rgba(158,27,38,0.05));
 }
 .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--red); color: #fff; padding: 6px 18px; border-radius: 30px; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; }
-.price { font-size: 3rem; font-weight: 800; margin: 20px 0; letter-spacing: -2px; }
-.price span { font-size: 1rem; color: var(--gray); letter-spacing: 0; }
 
-/* BOTÕES PREMIUM */
+/* Preço */
+.price-container { margin: 20px 0; display: flex; flex-direction: column; }
+.old-price { text-decoration: line-through; color: var(--gray); font-size: 1.1rem; opacity: 0.6; }
+.price { font-size: 3.2rem; font-weight: 800; line-height: 1; margin-top: 5px; letter-spacing: -2px; }
+.price span { font-size: 1rem; color: var(--gray); font-weight: 400; letter-spacing: 0; }
+
+/* Lista de benefícios */
+.card ul { list-style: none; width: 100%; margin-bottom: 25px; }
+.card ul li { margin-bottom: 12px; font-size: 0.95rem; display: flex; align-items: center; gap: 10px; color: var(--text); opacity: 0.9; }
+.card ul li i { color: var(--red); font-size: 0.8rem; }
+
+/* Balões de porcentagem no canto */
+.promo-badge {
+    position: absolute;
+    top: 20px;
+    right: -10px;
+    background: linear-gradient(135deg, #f1fa3c, #e67e22);
+    color: #000;
+    font-weight: 900;
+    padding: 5px 12px;
+    border-radius: 8px;
+    transform: rotate(5deg);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* BOTÕES */
 .buy { 
     width: 100%; padding: 18px; border: none; border-radius: 14px; 
     background: #fff; color: #000; font-weight: 700; cursor: pointer;
@@ -123,6 +157,7 @@ section { padding: 80px 20px; max-width: 1200px; margin: auto; }
 }
 .buy:hover { background: var(--red); color: #fff; transform: translateY(-3px); }
 
+/* BOTÃO FLUTUANTE */
 .floating-btn { 
     position: fixed; bottom: 30px; right: 30px; background: #25d366; color: #fff; 
     padding: 16px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; 
@@ -136,8 +171,16 @@ section { padding: 80px 20px; max-width: 1200px; margin: auto; }
 .light .switch::after { transform: translateX(20px); }
 
 .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; z-index: 999; backdrop-filter: blur(5px); }
+.light .modal { background: rgba(255,255,255,0.95); }
 .modal-box { background: var(--bg2); padding: 45px; border-radius: 32px; width: 90%; max-width: 450px; border: 1px solid var(--border); }
+.light .modal-box { background: #fff; border-color: rgba(0,0,0,0.1); color: #1d1d1f; }
 .modal-box input, .modal-box select, .modal-box textarea { width: 100%; margin-bottom: 15px; padding: 16px; border-radius: 14px; border: 1px solid var(--border); background: #000; color: #fff; font-size: 1rem; }
+.light .modal-box input, .light .modal-box select, .light .modal-box textarea { background: #f5f5f7; color: #1d1d1f; border: 1px solid rgba(0,0,0,0.1); }
+
 .btn-close { background: none; border: none; color: var(--gray); width: 100%; margin-top: 15px; cursor: pointer; font-weight: 500; }
 
 footer { text-align: center; padding: 60px; border-top: 1px solid var(--border); opacity: 0.6; }
+
+/* --- AJUSTES MODO CLARO --- */
+.light body::before, .light body::after { background: var(--red); opacity: 0.05; }
+.light .project-img { background: #f2f2f2; color: #aaa; border-bottom: 1px solid rgba(0,0,0,0.1); }
